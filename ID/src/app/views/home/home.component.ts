@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingService } from '../../../../src/app/shared/services/loading/loading.service';
+import { AppLoaderComponent } from '../../../../src/app/shared/services/app-loader/app-loader.component';
+import { AppLoaderService } from '../../../../src/app/shared/services/app-loader/app-loader.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { LoadingService } from '../../../../src/app/shared/services/loading/load
 export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
-    private loader: LoadingService,
+    private loader: AppLoaderService,
     private router: Router,
   ) { }
 
@@ -18,12 +19,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     console.log('Cerrar ventana')
-    this.loader.close();
+    // this.loader.close();
   }
 
   goToMainDash() {
-    this.loader.open();
-    this.router.navigateByUrl('/home');
+    this.loader.open('Hola');
+    // this.router.navigateByUrl('/home');
   }
 
 }

@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AdminLayoutComponent } from './componentes/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './componentes/layouts/auth-layout/auth-layout.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import { LoadingService } from './services/loading/loading.service';
-import { LoadingComponent } from './services/loading/loading.component';
 
 import {
   MatSidenavModule,
@@ -25,15 +23,17 @@ import {
   MatRippleModule,
   MatDialogModule
 } from '@angular/material';
+import { AppLoaderComponent } from './services/app-loader/app-loader.component';
+import { AppLoaderService } from './services/app-loader/app-loader.service';
 
 const classesToInclude = [
   AdminLayoutComponent,
   AuthLayoutComponent,
-  LoadingComponent
+  AppLoaderComponent
 ];
 
 @NgModule({
-  declarations: [classesToInclude, LoadingComponent],
+  declarations: [classesToInclude, AppLoaderComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -56,10 +56,10 @@ const classesToInclude = [
   ],
   providers: [
     AuthGuard,
-    LoadingService
+    AppLoaderService
   ],
   entryComponents: [
-    LoadingComponent
+    AppLoaderComponent
   ]
 })
 export class SharedModule { }
